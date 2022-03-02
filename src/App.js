@@ -1,6 +1,5 @@
 import "./App.css";
-import {
-  AuthContext,
+import  AuthContext,{
   reducer as authReducer,
   initialAuthState,
 } from "./contextApi/AuthContext";

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { AuthContext } from '../../contextApi/AuthContext';
+import AuthContext from '../../contextApi/AuthContext';
 import { Navigate } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
 function AuthGuard({children}) {
