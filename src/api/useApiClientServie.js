@@ -3,15 +3,15 @@ import AuthContext from '../contextApi/AuthContext'
 import { useContext,useEffect,useState } from 'react'
 import environment from "../environment";
 
+const getAxios = () => axios.create({
+    baseURL: environment.REACT_APP_BASE_URL,
+})
+
 function useApiClientServie() {
     const auth = useContext(AuthContext)
-    const [ApiRequest, setApiRequest] = useState(()=>axios.create({
-        baseURL: environment.REACT_APP_BASE_URL,
-    }))
+    const [ApiRequest, setApiRequest] = useState(()=>getAxios())
     useEffect(() => {
-        setApiRequest(()=>axios.create({
-            baseURL: environment.REACT_APP_BASE_URL,
-        }))
+        setApiRequest(()=>getAxios())
     }, [auth.state.token])
     ApiRequest.interceptors.request.use(
         config=>{
