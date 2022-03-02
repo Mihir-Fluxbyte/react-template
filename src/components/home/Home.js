@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import AuthContext from "../../contextApi/AuthContext";
 import useApiClientServie from "../../api/useApiClientServie";
+import './Home.scss'
 
 function Home() {
   const auth = useContext(AuthContext);
@@ -14,8 +15,8 @@ function Home() {
   return (
     <>
       <div>home</div>
-      <div>token= {auth.state.token}</div>
-      <button onClick={onLogout}>Logout</button>
+      <div className="token-div">token= {auth.state.token}</div>
+      <button className="btn" onClick={onLogout}>Logout</button>
       <button onClick={
         () => auth.dispatch({ type: "LOGIN", payload: {user:'string',token:`${Math.random()}`} })
       }>
