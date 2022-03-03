@@ -1,15 +1,15 @@
 import React, { useContext } from "react";
 import AuthContext from "../../contextApi/AuthContext";
-import useApiClientServie from "../../api/useApiClientServie";
+import useApiClientService from "../../api/useApiClientService";
 
 function Home() {
   const auth = useContext(AuthContext);
-  const { ApiGet } = useApiClientServie();
+  const { ApiGet } = useApiClientService();
   const onLogout = () => {
     auth.dispatch({ type: "LOGOUT" });
   };
   const getApiTest = () => {
-    ApiGet().then();
+    ApiGet('/temp').then();
   };
   return (
     <>

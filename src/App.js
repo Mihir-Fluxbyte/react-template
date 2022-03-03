@@ -1,17 +1,36 @@
 import "./App.css";
-import  AuthContext,{
+
+import LoadingContext, {
+  reducer as loadingReducer,
+  initialLoadingState,
+} from "./contextApi/LoadingContext";
+import AuthContext, {
   reducer as authReducer,
   initialAuthState,
 } from "./contextApi/AuthContext";
 import { useReducer } from "react";
 import Router from "./router";
+import Provider from "./contextApi/Provider";
+import Loading from "./@shared/Components/Loading";
 
 function App() {
-  const [state, dispatch] = useReducer(authReducer, initialAuthState);
   return (
-    <AuthContext.Provider value={{state, dispatch}}>
-      <Router/>
-    </AuthContext.Provider>
+    <>
+      <Provider
+        Context={LoadingContext}
+        initialState={initialLoadingState}
+        reducer={loadingReducer}
+      >
+        <Provider
+          Context={AuthContext}
+          initialState={initialAuthState}
+          reducer={authReducer}
+        >
+          <Router />
+          <Loading />
+        </Provider>
+      </Provider>
+    </>
   );
 }
 
