@@ -1,5 +1,5 @@
 export function setLocalStorage(key, value){
-    if(value == undefined) return localStorage.removeItem(key)
+    if(value === undefined) return localStorage.removeItem(key)
     localStorage.setItem(key, JSON.stringify(value))
 }
 
@@ -9,7 +9,7 @@ export function getLocalStorage(key){
 }
 
 export function setSessionStorage(key, value){
-    if(value == undefined) return localStorage.removeItem(key)
+    if(value === undefined) return localStorage.removeItem(key)
     sessionStorage.setItem(key, JSON.stringify(value))
 }
 
