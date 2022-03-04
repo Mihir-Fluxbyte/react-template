@@ -19,8 +19,8 @@ export const reducer = (state, action) => {
       return {
         ...state,
         isAuthenticated: true,
-        user: action.payload.user,
-        token: action.payload.token,
+        user: action.payload.user === undefined ? state.user : action.payload.user,
+        token: action.payload.token === undefined ? state.token : action.payload.token,
       };
     case "LOGOUT":
       clearLocalStorage();
