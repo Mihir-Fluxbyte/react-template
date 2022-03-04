@@ -1,20 +1,21 @@
 import { createContext } from "react";
+import { clearLocalStorage, getLocalStorage, setLocalStorage } from "../@shared/Utility/storageHelper";
 
 export default createContext();
 
 export const initialAuthState = () => {
   return {
-    isAuthenticated: Boolean(localStorage.getItem("token")),
-    token: localStorage.getItem("token"),
-    user: localStorage.getItem("user"),
-  };
+    isAuthenticated: Boolean(getLocalStorage("token")),
+    token: getLocalStorage("token"),
+    user: getLocalStorage("user"),
+  }
 };
 
 export const reducer = (state, action) => {
   switch (action.type) {
     case "LOGIN":
-      localStorage.setItem("user", action.payload.user);
-      localStorage.setItem("token", action.payload.token);
+      setLocalStorage("user", action.payload.user);
+      setLocalStorage("token", action.payload.token);
       return {
         ...state,
         isAuthenticated: true,
@@ -22,7 +23,7 @@ export const reducer = (state, action) => {
         token: action.payload.token,
       };
     case "LOGOUT":
-      localStorage.clear();
+      clearLocalStorage();
       return initialAuthState();
 
     default:

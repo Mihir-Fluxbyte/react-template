@@ -1,8 +1,10 @@
 import { useReducer, useMemo } from "react";
 
 function Provider({ Context, initialState, reducer, children }) {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  if (typeof initialState === "function")
+  initialState = initialState()
 
+  const [state, dispatch] = useReducer(reducer, initialState);
   const contextValue = useMemo(() => {
     return { state, dispatch };
   }, [state, dispatch]);

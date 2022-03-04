@@ -6,9 +6,9 @@ function Loading() {
   const loading = useContext(LoadingContext);
   if(!loading.state.isLoading) return null;
   return <>
-    <div class="overlay">
+    <div className="overlay">
       <div>
-        <div class="spinner">
+        <div className="spinner">
         </div>
     </div>
   </div>
