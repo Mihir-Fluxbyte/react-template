@@ -12,24 +12,28 @@ import { useReducer } from "react";
 import Router from "./router";
 import Provider from "./contextApi/Provider";
 import Loading from "./@shared/Components/Loading";
+import { Provider as ReduxProvider } from "react-redux";
+import { store } from "./@store/store";
 
 function App() {
   return (
     <>
-      <Provider
-        Context={LoadingContext}
-        initialState={initialLoadingState}
-        reducer={loadingReducer}
-      >
+      <ReduxProvider store={store}>
         <Provider
-          Context={AuthContext}
-          initialState={initialAuthState}
-          reducer={authReducer}
+          Context={LoadingContext}
+          initialState={initialLoadingState}
+          reducer={loadingReducer}
         >
-          <Router />
-          <Loading />
+          <Provider
+            Context={AuthContext}
+            initialState={initialAuthState}
+            reducer={authReducer}
+          >
+            <Router />
+            <Loading />
+          </Provider>
         </Provider>
-      </Provider>
+      </ReduxProvider>
     </>
   );
 }

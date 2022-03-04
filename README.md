@@ -72,3 +72,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 ### How to Use Scss in react
 install package and create file style.scss
 `npm i sass`
+
+
+## Setup Redux
+`npm install @reduxjs/toolkit react-redux`

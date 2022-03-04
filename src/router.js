@@ -4,6 +4,7 @@ import Login from "./components/login/Login";
 import Layout from "./@shared/layout/Layout";
 import AuthGuard from "./@shared/Guards/AuthGuard";
 import { BrowserRouter } from "react-router-dom";
+import Dashboard from "./components/Dashboard/Dashboard";
 
 function Router() {
   return (
@@ -13,6 +14,7 @@ function Router() {
         <Route element={<Layout />}>
           <Route element={<AuthGuard />}>
             <Route path="home" element={<Home />} />
+            <Route path="dashboard" element={<Dashboard/>}/>
           </Route>
         </Route>
       </Routes>
